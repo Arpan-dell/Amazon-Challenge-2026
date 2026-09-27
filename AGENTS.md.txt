@@ -1,0 +1,13 @@
+# Amazon ML Challenge 2026 - Entity Resolution
+
+## User & Background
+- **User**: Engineering undergrad (C++, Python, SQL) but a beginner in Machine Learning. 
+- **Goal**: Build a baseline model for the 2026 Amazon ML Challenge (Business Entity Resolution).
+- **Current State**: The 3.5GB dataset is downloaded locally into the `data/` folder (ignored in Git). `train_source1.parquet` is verified and loading successfully. A baseline training script (`train_baseline.py`) is currently being drafted.
+
+## Strict Operating Rules for Agents
+1. **Tooling & Memory**: You must write code tailored for Google Colab. NEVER load the entire dataset using Pandas; you MUST use Polars to avoid out-of-memory crashes. 
+2. **Algorithmic Efficiency**: Do NOT write O(n^2) all-to-all comparisons. You must implement a "Blocking" strategy (e.g., grouping by country or region) before running similarity metrics to make compute feasible.
+3. **No External Data**: Do NOT use or suggest external APIs, geocoders, or company registries. This will disqualify the user.
+4. **Conservative Metric**: Do not lower the match confidence threshold just to chase recall. The challenge heavily penalizes false positives. Stick to high-confidence baseline predictions.
+5. **Baselines First**: We are currently validating baselines. Do not suggest complex deep learning architectures until the simple string-matching baseline is fully validated and working.
