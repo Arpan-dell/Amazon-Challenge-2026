@@ -6,10 +6,10 @@ import os
 # CONFIG
 # =============================================================================
 DATA_DIR = "."
-TRAIN_S1_PATH = f"{DATA_DIR}/train_source1.tsv"
-TRAIN_S2_PATH = f"{DATA_DIR}/train_source2.tsv"
-TRAIN_S3_PATH = f"{DATA_DIR}/train_source3.tsv"
-OUT_MATCHES = f"{DATA_DIR}/matching_results.tsv"
+TRAIN_S1_PATH = f"{DATA_DIR}/train_source1.parquet"
+TRAIN_S2_PATH = f"{DATA_DIR}/train_source2.parquet"
+TRAIN_S3_PATH = f"{DATA_DIR}/train_source3.parquet"
+OUT_MATCHES = f"{DATA_DIR}/matching_results.csv"
 
 def string_similarity(a: str, b: str) -> float:
     """Calculate simple string similarity (Rule 5: Simple string-matching baseline)."""
@@ -23,8 +23,8 @@ def load_source(path: str, tag: str) -> pl.LazyFrame:
     Returns a LazyFrame for optimized execution.
     """
     print(f"Loading data from {path} using Polars (Lazy)...")
-    # Using scan_csv for TSV files
-    df = pl.scan_csv(path, separator="\t", ignore_errors=True)
+    # Using scan_parquet for Parquet files
+    df = pl.scan_parquet(path)
     
     # Prefix columns to avoid collisions, except for blocking keys
     # Assuming 'id', 'name', 'address' might be present
