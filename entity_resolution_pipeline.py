@@ -5,7 +5,7 @@ import os
 # =============================================================================
 # CONFIG
 # =============================================================================
-DATA_DIR = "."
+DATA_DIR = "data"
 TRAIN_S1_PATH = f"{DATA_DIR}/train_source1.parquet"
 TRAIN_S2_PATH = f"{DATA_DIR}/train_source2.parquet"
 TRAIN_S3_PATH = f"{DATA_DIR}/train_source3.parquet"
