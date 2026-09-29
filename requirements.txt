@@ -1,0 +1,6 @@
+polars
+numpy
+rapidfuzz
+scikit-learn
+lightgbm
+unidecode
